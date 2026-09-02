@@ -1,19 +1,20 @@
 <?php
-echo "Hello, World!";
-// This is a comment in PHP
-
-/**
- * 
- * long comment
- * hello
- */
-
-$name = "John Doe"; // Variable to store the name
-$age = 30; // Variable to store the age
-
-echo "My name is $name and I am $age years old."; // Output the name and age
-
-$age = $age *2 *3 *4 *5 *6 *7 *8 *9 *10; // Update the age variable by multiplying it by 10
-
-echo 2 + 2; // Output the result of 2 + 2
+$test = 10;
+$test = 3.1;
+$test = "Hello World";
+$test = "õpilane";
+$test = true; // Boolean
+$test = false; 
+$test = null; // Absence of value
+$lol;
+var_dump($test);
+var_dump($lol);
+$test = [1, 2, "Three", 4.0, true, null];
+var_dump($test);
+$test = new stdClass();
+$test->name = "John";
+var_dump($test);
+$num1 = 10;
+$num2 = "10";
+var_dump($num1 == $num2); // true
 ?>
