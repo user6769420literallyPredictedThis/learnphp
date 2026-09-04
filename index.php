@@ -1,22 +1,16 @@
 <?php
-$test = 10;
-$test = 10 + 2;
-$test = 10 - 2;
-$test = 10 * 2;
-$test = 10 / 2;
-$test = $test - 1;
-$test -= 1;
-$test += 1;
-$test *= 2;
-$test /= 2;
-$test = 10 % 3;
-$test++;
-$test--;
-$test = (10 * (2 - 3) * 4) / 2;
-$test = $test % 2;
-$test **= 3;
-$test = 2 ** 4; // 2 to the power of 4
-$test = sqrt(16); // square root of 16
+$test = 'Hello, World!';
+$test = 'This is a ' . 'test string';
+$test .= '!';
+$name = 'John Doe';
+$age = 30;
+$test = $name . ' is ' . $age . ' years old.';
+$test = "$name is $age years old."; // Double-quoted strings allow to connect variables directly
+$test = "Hello\n\nWorld!"; // Double-quoted strings allow to connect variables directly
+$letter = 'A';
+$letter ++;
 
-// https://www.php.net/manual/en/ref.math.php math functions.
+var_dump($letter);
+
+// https://www.php.net/manual/en/ref.strings.php String functions.
 ?>
