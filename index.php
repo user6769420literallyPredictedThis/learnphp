@@ -38,4 +38,15 @@ var_dump($box2);
 var_dump($box2->volume());
 var_dump($box1);
 
+$num1 = 1;
+$num2 = &$num1;
+$num1 = 1;
+var_dump($num1, $num2);
+
+$box1 = new Box();
+$box1->width = 1;
+$box2 = clone $box1; // $box2 is now a reference to the same object as $box1
+$box2->width = 2; // This will change the width of the object that both $box1 and $box2 reference
+var_dump($box1->width , $box2->width); // Both will output 2
+
 ?>
