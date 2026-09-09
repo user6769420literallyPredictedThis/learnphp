@@ -1,54 +1,41 @@
 <?php
-function hello(): void {
-    var_dump('Hello!');
-}
 
-hello();
-hello();
-hello();
+class Box {
+    public $length;
+    public $width;
+    public $height; 
+    public $isOpen = false;
+    public $hasBeenOpened = false;
 
-function helloName ($name = 'Guest') {
-    var_dump("Hello, $name!");
-}
-
-$hi = helloName('John');
-var_dump($hi); // This will output NULL because the function does not return anything.
-helloName('Jane');
-helloName('Bob');
-
-function helloNameAndAge ($name, $age) {
-    var_dump("Hello, $name! You are $age years old.");
-}
-helloNameAndAge('John', 30);
-helloNameAndAge('Jane', 25);
-helloNameAndAge('Bob', 35);
-
-helloName();
-
-$test = function () {
-    
-};
-
-var_dump($test);
-
-$numbers = [1, 2, 3, 4, 5];
-$squares = array_map(function ($n) {
-    return $n * $n;
-}, $numbers);
-$squares = array_map(fn($n) => $n * $n, $numbers);
-var_dump($squares);
-
-function cube(int $a): int|string {
-    if ($a < 0) {
-        return 'Error: Input must be a non-negative number.';
-    } else { // Else not needed, but added for clarity.
-        return $a * $a * $a;
+    public function open() {
+        $this->isOpen = true; // Dollar sign not needed here because we are accessing the property of the current object using $this.
+        $this->hasBeenOpened = true;
     }
-    var_dump('BLAAAAAA');
-}
-var_dump(cube(4));
+    public function close() {
+        $this->isOpen = false;
+    }
 
-$answer = cube(5);
-$text = "Cube of 5 is $answer";
-echo $text;
+    public function volume(){
+        return $this->length * $this->width * $this->height;
+    }
+}
+
+$box1 = new Box(); // Create a new instance of the Box class
+$box1->width = 10;
+$box1->length = 5;
+$box1->height = 3;
+
+
+$box1->open();
+var_dump($box1);
+var_dump($box1->volume());
+
+$box2 = new Box();
+$box2->width = 2;
+$box2->length = 4;
+$box2->height = 6;
+var_dump($box2);
+var_dump($box2->volume());
+var_dump($box1);
+
 ?>
