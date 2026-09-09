@@ -1,24 +1,54 @@
 <?php
-$test = [1, 2, 'word', true];
-var_dump($test[3]); // Prints the 4th element of the array, which is true
-$test[2] = 'new word'; // Changes the 3rd element of the array to 'new word'
-$test[4] = 'new value'; // Adds a new element to the array at index 4
-$test[] = 'another value'; // Adds a new element to the end of the array
-array_push($test, 'pushed value'); // Adds a new element to the end of the array using array_push. Same as last example but more complicated..
-$test = [ 
-    'name' => 'John',
-    'age' => 30,
-    'city' => 'New York',
-    'random key',
-    100 => 'New value',
-    ]; // Reassigns the array to a new associative array
-var_dump($test['name']); // Prints the value of the 'name' key, which is 'John'
-var_dump($test); // Prints the value of the 100 key, which is 'New value'
+function hello(): void {
+    var_dump('Hello!');
+}
 
-$test = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-];
-var_dump($test[1][2]); // Prints the value of the 3rd element of the 2nd array, which is 6
+hello();
+hello();
+hello();
+
+function helloName ($name = 'Guest') {
+    var_dump("Hello, $name!");
+}
+
+$hi = helloName('John');
+var_dump($hi); // This will output NULL because the function does not return anything.
+helloName('Jane');
+helloName('Bob');
+
+function helloNameAndAge ($name, $age) {
+    var_dump("Hello, $name! You are $age years old.");
+}
+helloNameAndAge('John', 30);
+helloNameAndAge('Jane', 25);
+helloNameAndAge('Bob', 35);
+
+helloName();
+
+$test = function () {
+    
+};
+
+var_dump($test);
+
+$numbers = [1, 2, 3, 4, 5];
+$squares = array_map(function ($n) {
+    return $n * $n;
+}, $numbers);
+$squares = array_map(fn($n) => $n * $n, $numbers);
+var_dump($squares);
+
+function cube(int $a): int|string {
+    if ($a < 0) {
+        return 'Error: Input must be a non-negative number.';
+    } else { // Else not needed, but added for clarity.
+        return $a * $a * $a;
+    }
+    var_dump('BLAAAAAA');
+}
+var_dump(cube(4));
+
+$answer = cube(5);
+$text = "Cube of 5 is $answer";
+echo $text;
 ?>
