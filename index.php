@@ -1,9 +1,9 @@
 <?php
 
 class Box {
-    public $length;
-    public $width;
-    public $height; 
+    public $width; // public properties can be accessed from anywhere
+    private $height; // private properties can only be accessed from within the class
+    protected $length; // protected properties can be accessed from within the class and its subclasses
     public $isOpen = false;
     public $hasBeenOpened = false;
 
@@ -18,35 +18,35 @@ class Box {
     public function volume(){
         return $this->length * $this->width * $this->height;
     }
+
+    public function test(){
+        var_dump($this->width);
+    }
+
+    public function setHeight($height) {
+        if($height > 0) {
+            $this->height = $height;
+        }
+    }
+
+    public function getHeight($height) {
+        return $this->height;
+    }
 }
 
-$box1 = new Box(); // Create a new instance of the Box class
-$box1->width = 10;
-$box1->length = 5;
-$box1->height = 3;
+class metalBox extends Box {
+    public $weight;
+public function mass() {
+        return $this->volume() * $this->weight; // This will cause an error because $width is a private property of the parent class Box and cannot be accessed from the subclass metalBox.
+    }
+    public function test() {
+        var_dump($this->width); // This will cause an error because $width is a private property of the parent class Box and cannot be accessed from the subclass metalBox.
+    }
 
+}
 
-$box1->open();
-var_dump($box1);
-var_dump($box1->volume());
-
-$box2 = new Box();
-$box2->width = 2;
-$box2->length = 4;
-$box2->height = 6;
-var_dump($box2);
-var_dump($box2->volume());
-var_dump($box1);
-
-$num1 = 1;
-$num2 = &$num1;
-$num1 = 1;
-var_dump($num1, $num2);
-
-$box1 = new Box();
-$box1->width = 1;
-$box2 = clone $box1; // $box2 is now a reference to the same object as $box1
-$box2->width = 2; // This will change the width of the object that both $box1 and $box2 reference
-var_dump($box1->width , $box2->width); // Both will output 2
+$metal1 = new Box();
+$metal1->test();
+var_dump($metal1);
 
 ?>
