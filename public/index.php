@@ -1,16 +1,46 @@
-<?php 
+<?php
 if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
     return false;    // serve the requested resource as-is.
 }
-function dump(...$vars) {
+function dump(...$vars)
+{
     echo '<pre>';
     var_dump(...$vars);
     echo '<pre>';
-
 }
 
-switch($_SERVER['REQUEST_URI']) {
+switch ($_SERVER['REQUEST_URI']) {
     case '/':
+        $title = 'World';
+        $posts = [
+            [
+                'title' => 'Some world title 1',
+                'content' => 'Some world content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
+            ],
+
+            [
+                'title' => 'Some world title 2',
+                'content' => 'Some world content 2',
+                'date' => 'January 2, 2021',
+                'author' => 'Juss',
+            ],
+
+            [
+                'title' => 'Some world title 3',
+                'content' => 'Some world content 3',
+                'date' => 'January 3, 2021',
+                'author' => 'Alex',
+            ],
+
+            [
+                'title' => 'Some world title 4',
+                'content' => 'Some world content 4',
+                'date' => 'January 4, 2021',
+                'author' => 'Manivald',
+            ],
+        ];
         include __DIR__ . '/../views/index.php';
         break;
     case '/us':
@@ -21,5 +51,4 @@ switch($_SERVER['REQUEST_URI']) {
         break;
     default:
         echo '404';
-
 }
